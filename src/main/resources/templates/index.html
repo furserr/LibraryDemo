@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Library</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+	
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	
+    <!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+	
+</head>
+<body>
+    
+    
+    <div class="container z-depth-1 p-5 my-5">
+
+  	<!-- Section: Block Content -->
+	  <section>
+	
+	    <!-- Shopping Cart table -->
+	    <div class="table-responsive">
+	    <div class="row">
+	    <div class="col-md-4"><h3>Kütüphane</h3></div>
+	    <div class="text-right col-md-8">
+	    <a href="newAuthor" type="button" class="btn btn-dark-green">Yazar Ekle</a>
+	    <a href="newPublisher" type="button" class="btn btn-dark-green">Yayınevi Ekle</a>
+	    <a href="new" type="button" class="btn btn-dark-green">Kitap Ekle</a>
+	    </div>
+	    </div>
+	    <hr>
+	    <br>
+	    <div>
+	    	<!-- Search form -->
+			<form th:action="@{/}" class="form-inline d-flex justify-content-center md-form form-md">
+			  <i class="fa fa-search" aria-hidden="true"></i>
+			  <input name="search" class="form-control form-control-md ml-4 w-75" type="text" placeholder="Kitap Adı, Seri Adı, Yazar, ISBN"
+			    aria-label="Search">
+			    <button class="btn btn-outline-info btn-md my-0" type="submit">Ara</button>
+			</form>
+	    </div>
+	    <hr>
+		      <table class="table product-table table-cart-v-1">
+		        <!-- Table head -->
+		        <thead>
+		          <tr>
+		            <th class="font-weight-bold text-primary">
+		              <h5>Kitap Adı</h5>
+		            </th>
+		            <th class="font-weight-bold text-primary">
+		              <h5>Kitap Alt Adı</h5>
+		            </th>
+		            <th class="font-weight-bold text-primary">
+		              <h5>Kitap Seri</h5>
+		            </th>
+		            <th class="font-weight-bold text-primary">
+		              <h5>Yazar</h5>
+		            </th>
+		            <th class="font-weight-bold text-primary">
+		              <h5>Yayın Evi</h5>
+		            </th>
+		            <th class="font-weight-bold text-primary">
+		              <h5>ISBN</h5>
+		            </th>
+		            <th class="font-weight-bold text-primary">
+		              <h5>Açıklama</h5>
+		            </th>
+		            <th></th>
+		          </tr>
+		        </thead>
+		        <!-- Table head -->
+		        <!-- Table body -->
+		        <tbody>
+		          <!-- First row -->
+		          <tr th:each="book : ${listBooks}">
+		            <td th:text="${book.kitapadi}"></td>
+		            <td th:text="${book.kitapalt}">White</td>
+		            <td th:text="${book.kitapseri}"></td>
+		            <td th:each="author : ${book.author}" th:text="${author.yazaradi}"></td>
+		            <td th:each="publisher : ${book.publisher}" th:text="${publisher.yayineviadi}"></td>
+		            <td th:text="${book.isbn}"></td>
+		            <td th:text="${book.aciklama}"></td>
+		            <td>
+		            <a th:href="@{'/edit/' + ${book.id}}" type="button" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top"
+		                title="Remove item">Düzenle
+		              </a>
+		              <a th:href="@{'/delete/' + ${book.id}}" type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top"
+		                title="Remove item">Sil
+		              </a>
+		            </td>
+		          </tr>
+		          <!-- First row -->
+		        </tbody>
+		        <!-- Table body -->
+		      </table>
+		    </div>
+		    <!-- Shopping Cart table -->
+		
+		  </section>
+	  <!-- Section: Block Content -->
+	
+	</div>
+</body>
+</html>

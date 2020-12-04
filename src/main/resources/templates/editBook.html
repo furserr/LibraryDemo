@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kitap Düzenle</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+	
+</head>
+<body>
+  <div class="container my-5 py-5 z-depth-1">
+ 
+ 
+    <!--Section: Content-->
+    <section class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
+
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center">
+
+        <!--Grid column-->
+        <div class="col-md-6">
+
+          <!-- Default form subscription -->
+          <form class="text-center" action="#" th:action="@{/save}" th:object="${book}" method="post">
+
+            <p class="h4 mb-4">Kitap Düzenle</p>
+            
+            <hr>
+            <br>
+            <!-- ID -->
+            <input style="display: none" type="text" class="form-control mb-4" th:field="*{id}">
+
+            <!-- Kitap Adı -->
+            <label>Kitap Adı</label>
+            <input type="text" class="form-control mb-4" placeholder="Kitap Adı" th:field="*{kitapadi}">
+            
+            <!-- Kitap Alt Adı -->
+            <label>Kitap Alt Adı</label>
+            <input type="text" class="form-control mb-4" placeholder="Kitap Alt Adı" th:field="*{kitapalt}">
+            
+            <!-- Kitap Seri -->
+            <label>Kitap Seri</label>
+            <input type="text" class="form-control mb-4" placeholder="Kitap Seri" th:field="*{kitapseri}">
+            
+            <!-- ISBN -->
+            <label>ISBN</label>
+            <input type="text" class="form-control mb-4" placeholder="ISBN" th:field="*{isbn}">
+            
+            <!-- Aciklama -->
+            <label>Açıklama</label>
+            <input type="text" class="form-control mb-4" placeholder="Açıklama" th:field="*{aciklama}">
+            
+            <!-- YazarSeçimi -->
+            <label>Yazar</label>
+            <select class="form-control mb-4 browser-default custom-select" th:field="*{author}">
+			  <option value="">Seçiniz</option>
+			  <option th:each="a: ${authors}" th:value="${a.author_id}" th:text="${a.yazaradi}" />
+			</select>
+			
+			<!-- YayineviSeçimi -->
+            <label>Yayınevi</label>
+            <select class="form-control mb-4 browser-default custom-select" th:field="*{publisher}">
+			  <option value="">Seçiniz</option>
+			  <option th:each="p: ${publishers}" th:value="${p.id}" th:text="${p.yayineviadi}" />
+			</select>
+
+            <!-- Button -->
+            <button class="btn btn-danger btn-block" type="submit">Ekle</button>
+
+
+          </form>
+          <!-- Default form subscription -->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+
+    </section>
+    <!--Section: Content-->
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Yayınevi Düzenle</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+	
+</head>
+<body>
+  <div class="container my-5 py-5 z-depth-1">
+ 
+ 
+    <!--Section: Content-->
+    <section class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
+
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center">
+
+        <!--Grid column-->
+        <div class="col-md-6">
+
+          <!-- Default form subscription -->
+          <form class="text-center" action="#" th:action="@{/savePublisher}" th:object="${publisher}" method="post">
+
+            <p class="h4 mb-4">Yayınevi Düzenle</p>
+            
+            <hr>
+            <br>
+            <!-- ID -->
+            <input style="display: none" type="text" class="form-control mb-4" th:field="*{id}">
+
+            <!-- Yazar Adı -->
+            <label>Yayınevi Adı</label>
+            <input type="text" class="form-control mb-4" placeholder="Yayınevi Adı" th:field="*{yayineviadi}">
+            
+            <!-- Aciklama -->
+            <label>Açıklama</label>
+            <input type="text" class="form-control mb-4" placeholder="Açıklama" th:field="*{aciklama}">
+
+            <!-- Button -->
+            <button class="btn btn-danger btn-block" type="submit">Ekle</button>
+
+
+          </form>
+          <!-- Default form subscription -->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+
+    </section>
+    <!--Section: Content-->
+
+
+  </div>
+</body>
+</html>

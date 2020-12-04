@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Yazar Ekle</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Bootstrap core CSS -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<!-- MDB core JavaScript -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+	
+</head>
+<body>
+  <div class="container my-5 py-5 z-depth-1">
+ 
+ 
+    <!--Section: Content-->
+    <section class="px-md-5 mx-md-5 text-center text-lg-left dark-grey-text">
+
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center">
+
+        <!--Grid column-->
+        <div class="col-md-6">
+
+          <!-- Default form subscription -->
+          <form class="text-center" action="#" th:action="@{/saveAuthor}" th:object="${author}" method="post">
+
+            <p class="h4 mb-4">Yazar Ekle</p>
+            
+            <hr>
+            <br>
+
+            <!-- Yazar Adı -->
+            <label>Yazar Adı</label>
+            <input type="text" class="form-control mb-4" placeholder="Yazar Adı" th:field="*{yazaradi}">
+            
+            <!-- Aciklama -->
+            <label>Açıklama</label>
+            <input type="text" class="form-control mb-4" placeholder="Açıklama" th:field="*{aciklama}">
+
+            <!-- Button -->
+            <button class="btn btn-danger btn-block" type="submit">Ekle</button>
+
+
+          </form>
+          <!-- Default form subscription -->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+      
+      <!-- Shopping Cart table -->
+	    <div class="table-responsive">
+	    <hr>
+	    <br>
+	    <h3>Yazarlar</h3>
+	    <br>
+	    <hr>
+		      <table class="table product-table table-cart-v-1">
+		        <!-- Table head -->
+		        <thead>
+		          <tr>
+		            <th class="font-weight-bold text-primary">
+		              <h5>Yazar Adı</h5>
+		            </th>
+		            <th class="font-weight-bold text-primary">
+		              <h5>Açıklama</h5>
+		            </th>
+		            <th></th>
+		          </tr>
+		        </thead>
+		        <!-- Table head -->
+		        <!-- Table body -->
+		        <tbody>
+		          <!-- First row -->
+		          <tr th:each="author : ${listAuthors}">
+		            <td th:text="${author.yazaradi}"></td>
+		            <td th:text="${author.aciklama}"></td>
+		            <td>
+		            <a th:href="@{'/editAuthor/' + ${author.author_id}}" type="button" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top"
+		                title="Edit item">Düzenle
+		              </a>
+		              <a th:href="@{'/deleteAuthor/' + ${author.author_id}}" type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top"
+		                title="Remove item">Sil
+		              </a>
+		            </td>
+		          </tr>
+		          <!-- First row -->
+		        </tbody>
+		        <!-- Table body -->
+		      </table>
+		    </div>
+		    <!-- Shopping Cart table -->
+
+
+    </section>
+    <!--Section: Content-->
+
+
+  </div>
+</body>
+</html>
